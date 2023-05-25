@@ -86,7 +86,7 @@ multimodal-sarcasm-detection 多模态反讽检测
       └─runs               - TensorBoard 文件  1. cd 当前文件夹 2. tensorboard --logdir=runs 3. 打开网址
 ```
 ## 库及版本
-Win10 + Anaconda
+Win10 + Anaconda + CUDA　11.1
 |     名称     |    版本     |
 | :----------: | :---------: |
 |    python    |    3.8.0    |
