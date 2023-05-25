@@ -109,19 +109,19 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### 项目背景
 ### 参数设置
 这些参数是我手调的，一定还有比这个更好的，还请评价一些，改一下值
-| **Hyper-parameters**                  | **Values** |
-| ------------------------------------- | ---------- |
-| **Learning rate**                     | 1e-4       |
-| **Batch size**                        | 128        |
-| **Norm type**                         | 2          |
-| **Gradient Clipping**                 | 10         |
-| **Dropout**                           | 0.1        |
-| **LSTM hidden size**                  | 256        |
-| **LSTM num layers**                   | 2          |
-| **Word and attribute embedding size** | 200        |
-| **Sequence len**                      | 80         |
-| **ResNet FC size**                    | 1024       |
-| **Modality fusion size**              | 512        |
+|         **Hyper-parameters**          | **Values** |
+| :-----------------------------------: | :--------: |
+|           **Learning rate**           |    1e-4    |
+|            **Batch size**             |    128     |
+|             **Norm type**             |     2      |
+|         **Gradient Clipping**         |     10     |
+|              **Dropout**              |    0.1     |
+|         **LSTM hidden size**          |    256     |
+|          **LSTM num layers**          |     2      |
+| **Word and attribute embedding size** |    200     |
+|           **Sequence len**            |     80     |
+|          **ResNet FC size**           |    1024    |
+|       **Modality fusion size**        |    512     |
 
 ### 数据增强
 基于[MixGen](https://arxiv.org/abs/2206.08358)算法多模态的数据增强方法,公式如下：
@@ -131,6 +131,8 @@ $$ I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert} $$
 $$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
 
 其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
+
+![Uploading image.png…]()
 
 
 
