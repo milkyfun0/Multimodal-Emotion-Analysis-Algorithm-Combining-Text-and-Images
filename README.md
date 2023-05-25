@@ -102,7 +102,8 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 ## 模型架构
-![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/33d52f5e-359e-4049-bdc4-3b2e5fc808b0)
+![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/ff1d204a-0b36-4124-9077-f78c3348ed90)
+
 
 
 ## 简单的介绍
@@ -132,7 +133,8 @@ $$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
 
 其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
 
-![Uploading image.png…]()
+![屏幕截图 2023-05-25 161717](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/d29124c1-0fa0-47ae-8cee-d644e1fcc56c)
+
 
 
 
