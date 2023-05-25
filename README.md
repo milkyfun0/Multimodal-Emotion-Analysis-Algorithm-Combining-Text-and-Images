@@ -8,7 +8,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 ****
 ## 目录
 * [前言](#前言)
-* [效果](#效果)
+* [效果图](#效果图)
 * [文件结构](#文件结构)
 * [库及版本](#库及版本)
 * [模型架构](#模型架构)
@@ -24,8 +24,8 @@ multimodal-sarcasm-detection 多模态反讽检测
 
 比原论文(f1=0.801)的效果好一些
 
-## 效果
-
+## 效果图
+![效果图](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/blob/main/ReadMePictureSample/logs.png)
 
 ## 文件结构
 ```
