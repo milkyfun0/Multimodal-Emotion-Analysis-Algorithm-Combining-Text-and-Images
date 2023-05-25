@@ -1,21 +1,21 @@
 # Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images
 multimodal-sarcasm-detection
 
-**[介绍](./README.md)**
+**[中文](./README.md)**
 
-**[Introduction ](./README_EN.md)**
+**[English](./README_EN.md)**
 
 ****
 ## Catalogue
 * [Foreword](#Foreword)
-* [效果图](#效果图)
+* [Rendering](#Rendering)
 * [FileStructure](#FileStructure)
 * [LibrariesAndVersions](#LibrariesAndVersions)
 * [TheModelArchitecture](#TheModelArchitecture)
-* [简单的介绍](#简单的介绍)
-   * [项目背景](#项目背景)
-   * [参数设置](#参数设置)
-   * [数据增强](#数据增强)
+* [ABriefIntroduction](#ABriefIntroduction)
+   * [ProjectBackground](#ProjectBackground)
+   * [ParameterSettings](#ParameterSettings)
+   * [DataAugmentation](#DataAugmentation)
 
 ## Foreword
 This project was improved under the premise of reproducing the paper, the address of the original paper：https://aclanthology.org/P19-1239/
@@ -23,8 +23,8 @@ This project was improved under the premise of reproducing the paper, the addres
 Performance：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
 Better than the original paper
 
-## 效果图
-![效果图](./ReadMePictureSample/logs.png)
+## Rendering
+![Rendering](./ReadMePictureSample/logs.png)
 
 ## FileStructure
 ```
@@ -102,16 +102,16 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## TheModelArchitecture
 
-![模型架构](./ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
+![TheModelArchitecture](./ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
 
-## 简单的介绍
-### 项目背景
+## ABriefIntroduction
+### ProjectBackground
 ![SDUST](./ReadMePictureSample/sdust.png)
 
-　　本项目是本人的本科论文的源代码，由于论文写的太烂，这里就不献丑了。本项目的就是基于图像和文本在前人[Cai等人](https://aclanthology.org/P19-1239/)的基础上，进行反讽检测，在实现中，我改变的他的网络结构，加入了注意力机制进行融合，提高了些精度，收敛效果也是不错的。如果源码有什么错误或者更好的实现，欢迎交流。真诚的感谢原论文的作者们才能让我完成了这个项目，他们也提交了原论文的代码，[start一下](https://github.com/headacheboy/data-of-multimodal-sarcasm-detection)。
+　　This project is my undergraduate paper source code, because the paper is too bad, here is not a disgrace. [the project is based on images and text on the Cai et al.] (https://aclanthology.org/P19-1239/), on the basis of detection of irony, in the implementation, I change his network structure, joined the attention mechanism, improves the precision, convergence effect also is pretty good. If there are any errors in the source code or better implementation, welcome to communicate. Sincerely thank the authors of the original papers that I can finished this project, they also submit the code of original papers, [start the] (https://github.com/headacheboy/data-of-multimodal-sarcasm-detection).
 
-### 参数设置
-　　这些参数是我手调的，一定还有比这个更好的，还请提醒一下，感谢
+### ParameterSettings
+　　These parameters are my hand adjustment, there must be better than this, please remind me, thank you
 |       **Hyper-parameters**        | **Values** |
 | :-------------------------------: | :--------: |
 |           Learning rate           |    1e-4    |
@@ -126,13 +126,13 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 |          ResNet FC size           |    1024    |
 |       Modality fusion size        |    512     |
 
-### 数据增强
-　　基于[MixGen](https://arxiv.org/abs/2206.08358)算法多模态的数据增强方法,公式如下：
+### DataAugmentation
+　　Based on [MixGen] (https://arxiv.org/abs/2206.08358) algorithm of multimodal data enhancement method, formula is as follows:
 
 $$ I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert} $$
 
 $$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
 
-　　其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
+　　Where, φ is the ratio of preserving I_base or T_base, and in this task, φ≥0.7 to ensure that the semantic relation is matched. Effect:
 
-![图片增强](./ReadMePictureSample/%E5%9B%BE%E7%89%87%E5%A2%9E%E5%BC%BA%E6%A0%B7%E4%BE%8B.md)
+![DataAugmentation](./ReadMePictureSample/%E5%9B%BE%E7%89%87%E5%A2%9E%E5%BC%BA%E6%A0%B7%E4%BE%8B.md)
