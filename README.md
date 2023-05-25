@@ -25,7 +25,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 比原论文(f1=0.801)的效果好一些
 
 ## 效果图
-![效果图](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/blob/main/ReadMePictureSample/logs.png)
+![效果图](./ReadMePictureSample/logs.png)
 ## 文件结构
 ```
 .
@@ -101,11 +101,11 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 ## 模型架构
-![模型架构](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/blob/main/ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
+![模型架构](./ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
 
 ## 简单的介绍
 ### 项目背景
-![SDUST](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/blob/main/ReadMePictureSample/sdust.png)
+![SDUST](./ReadMePictureSample/sdust.png)
 
 　　本项目是本人的本科论文的源代码，由于论文写的太烂，这里就不献丑了。本项目的就是基于图像和文本在前人[Cai等人](https://aclanthology.org/P19-1239/)的基础上，进行反讽检测，在实现中，我改变的他的网络结构，加入了注意力机制进行融合，提高了些精度，收敛效果也是不错的。如果源码有什么错误或者更好的实现，欢迎交流。真诚的感谢原论文的作者们才能让我完成了这个项目，他们也提交了原论文的代码，[start一下](https://github.com/headacheboy/data-of-multimodal-sarcasm-detection)。
 
@@ -134,7 +134,7 @@ $$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
 
 　　其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
 
-![图片增强](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/blob/main/ReadMePictureSample/%E5%9B%BE%E7%89%87%E5%A2%9E%E5%BC%BA%E6%A0%B7%E4%BE%8B.md)
+![图片增强](./ReadMePictureSample/%E5%9B%BE%E7%89%87%E5%A2%9E%E5%BC%BA%E6%A0%B7%E4%BE%8B.md)
 
 
 
