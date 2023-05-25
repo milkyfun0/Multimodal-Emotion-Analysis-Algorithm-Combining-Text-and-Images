@@ -58,7 +58,7 @@ class Main:
         self.maxClipping = 5  # 梯度裁剪
         self.normType = 2  # 梯度的范式
         self.dropout = 0.1  # DropOut层的概率 留取80%
-        self.maxEpoch = 10  # 最大迭代
+        self.maxEpoch = 10  # 最大迭代 大于3EPoch
         self.displayStep = 1  # 多少轮后展示训练结果ExtractFeature.py  =1时 会记录每个人epoch 当!=1时 记录maxEpoch//displayStep
         self.maxPatience = 10  # 能够容忍多少个epoch内都没有improvement 后期也不用了前期可调
         self.isJoin = isJoin
@@ -97,7 +97,7 @@ class Main:
         return DataLoader(dataset=data, batch_size=self.batchSize, shuffle=True, num_workers=1, drop_last=True)
         # pin_memory=True, prefetch_factor=2, persistent_workers=False)
 
-    def test(self, dataType=DATASET.TEST, num=2000):
+    def test(self, dataType=DATASET.TEST, num=200):
         if isinstance(self.net, torch.nn.Module):
             self.net.eval()
         with torch.no_grad():
