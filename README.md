@@ -20,7 +20,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 ## 前言
 　　本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
 
-　　效果：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
+　　效果(未进行数据增强)：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
 
 比原论文的效果好一些
 
