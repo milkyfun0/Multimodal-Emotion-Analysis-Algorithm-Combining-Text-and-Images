@@ -93,5 +93,5 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 ## TheModelArchitecture
-![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/38a3e686-6ea4-4761-9582-dae534bc23b4)
+![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/33d52f5e-359e-4049-bdc4-3b2e5fc808b0)
 
