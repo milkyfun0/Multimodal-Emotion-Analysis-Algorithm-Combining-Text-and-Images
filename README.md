@@ -1,9 +1,9 @@
 # Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images
 multimodal-sarcasm-detection 多模态反讽检测
 
-**[介绍](./README_CN.md)**
+**[介绍](./README.md)**
 
-**[Introduction ](./README.md)**
+**[Introduction ](./README_EN.md)**
 
 ****
 ## 目录
