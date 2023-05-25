@@ -273,7 +273,7 @@ def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0.2):
 
 
 def transLogs(logsPath=time.strftime("%Y-%m-%d", time.localtime())):
-    with open(saveModelWightsDir + logsPath + "/logs/2023-05-18", "rb") as f:
+    with open(saveModelWightsDir + logsPath + "/logs.py3", "rb") as f:
         logsDict, lrLogs = pickle.load(f)
     epochs = list(range(len(logsDict)))
     scores = {}
