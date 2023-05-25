@@ -19,7 +19,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
 
 效果：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
-比原论文好些
+比原论文好些,文件结构中没有的文件夹最好需要自己创建下
 
 ## 效果
 
@@ -102,4 +102,5 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/38a3e686-6ea4-4761-9582-dae534bc23b4)
 
 ## 简单介绍
+
 
