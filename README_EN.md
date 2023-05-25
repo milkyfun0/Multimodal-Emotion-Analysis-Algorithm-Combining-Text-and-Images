@@ -11,6 +11,10 @@ multimodal-sarcasm-detection
 * [FileStructure](#FileStructure)
 * [LibrariesAndVersions](#LibrariesAndVersions)
 * [TheModelArchitecture](#TheModelArchitecture)
+* [简单的介绍](#简单的介绍)
+   * [项目背景](#项目背景)
+   * [参数设置](#参数设置)
+   * [数据增强](#数据增强)
 
 ## Foreword
 This project was improved under the premise of reproducing the paper, the address of the original paper：https://aclanthology.org/P19-1239/
