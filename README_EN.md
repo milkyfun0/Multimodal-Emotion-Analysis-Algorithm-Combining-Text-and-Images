@@ -108,7 +108,7 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### ProjectBackground
 ![SDUST](./ReadMePictureSample/sdust.png)
 
-　　This project is my undergraduate paper source code, because the paper is too bad, here is not a disgrace. [the project is based on images and text on the Cai et al.] (https://aclanthology.org/P19-1239/), on the basis of detection of irony, in the implementation, I change his network structure, joined the attention mechanism, improves the precision, convergence effect also is pretty good. If there are any errors in the source code or better implementation, welcome to communicate. Sincerely thank the authors of the original papers that I can finished this project, they also submit the code of original papers, [start the] (https://github.com/headacheboy/data-of-multimodal-sarcasm-detection).
+　　This project is my undergraduate paper source code, because the paper is too bad, here is not a disgrace. [the project is based on images and text on the Cai et al.](https://aclanthology.org/P19-1239/), on the basis of detection of irony, in the implementation, I change his network structure, joined the attention mechanism, improves the precision, convergence effect also is pretty good. If there are any errors in the source code or better implementation, welcome to communicate. Sincerely thank the authors of the original papers that I can finished this project, they also submit the code of original papers, [start the](https://github.com/headacheboy/data-of-multimodal-sarcasm-detection).
 
 ### ParameterSettings
 　　These parameters are my hand adjustment, there must be better than this, please remind me, thank you
@@ -127,7 +127,7 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 |       Modality fusion size        |    512     |
 
 ### DataAugmentation
-　　Based on [MixGen] (https://arxiv.org/abs/2206.08358) algorithm of multimodal data enhancement method, formula is as follows:
+　　Based on [MixGen](https://arxiv.org/abs/2206.08358) algorithm of multimodal data enhancement method, formula is as follows:
 
 $$ I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert} $$
 
