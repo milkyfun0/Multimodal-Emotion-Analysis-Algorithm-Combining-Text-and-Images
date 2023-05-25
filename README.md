@@ -18,11 +18,11 @@ multimodal-sarcasm-detection 多模态反讽检测
    * [数据增强](#数据增强)
 
 ## 前言
-本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
+　　本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
 
-效果：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
+　　效果：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
 
-比原论文参数好看点,文件结构中主文件下没有的文件夹，到时候报错时也可以创建，最好提前创建好
+比原论文的效果好一些
 
 ## 效果
 
@@ -104,37 +104,37 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ## 模型架构
 ![image](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/ff1d204a-0b36-4124-9077-f78c3348ed90)
 
-
-
 ## 简单的介绍
 ### 项目背景
+
+　　本项目是本人的一篇本科论文的源代码，由于论文写的太烂，这里就不献丑了。本项目的就是基于图像和文本在前人[Cai等人](https://aclanthology.org/P19-1239/)的基础上，进行反讽检测，在实现中，我改变的他的网络结构，加入了注意力机制进行融合，提高了些精度，收敛效果也是不错的。如果源码有什么错误或者更好的实现，欢迎交流。真诚的感谢原论文的作者们才能让我完成了这个项目，他们也提交了原论文的代码，[start一下](https://github.com/headacheboy/data-of-multimodal-sarcasm-detection)。
+
 ### 参数设置
-这些参数是我手调的，一定还有比这个更好的，还请提醒一下，感谢
-|         **Hyper-parameters**          | **Values** |
-| :-----------------------------------: | :--------: |
-|           **Learning rate**           |    1e-4    |
-|            **Batch size**             |    128     |
-|             **Norm type**             |     2      |
-|         **Gradient Clipping**         |     10     |
-|              **Dropout**              |    0.1     |
-|         **LSTM hidden size**          |    256     |
-|          **LSTM num layers**          |     2      |
-| **Word and attribute embedding size** |    200     |
-|           **Sequence len**            |     80     |
-|          **ResNet FC size**           |    1024    |
-|       **Modality fusion size**        |    512     |
+　　这些参数是我手调的，一定还有比这个更好的，还请提醒一下，感谢
+|       **Hyper-parameters**        | **Values** |
+| :-------------------------------: | :--------: |
+|           Learning rate           |    1e-4    |
+|            Batch size             |    128     |
+|             Norm type             |     2      |
+|         Gradient Clipping         |     10     |
+|              Dropout              |    0.1     |
+|         LSTM hidden size          |    256     |
+|          LSTM num layers          |     2      |
+| Word and attribute embedding size |    200     |
+|           Sequence len            |     80     |
+|          ResNet FC size           |    1024    |
+|       Modality fusion size        |    512     |
 
 ### 数据增强
-基于[MixGen](https://arxiv.org/abs/2206.08358)算法多模态的数据增强方法,公式如下：
+　　基于[MixGen](https://arxiv.org/abs/2206.08358)算法多模态的数据增强方法,公式如下：
 
 $$ I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert} $$
 
 $$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
 
-其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
+　　其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
 
 ![屏幕截图 2023-05-25 161717](https://github.com/2573943723/Multimodal-Emotion-Analysis-Algorithm-Combining-Text-and-Images/assets/67378023/d29124c1-0fa0-47ae-8cee-d644e1fcc56c)
-
 
 
 
