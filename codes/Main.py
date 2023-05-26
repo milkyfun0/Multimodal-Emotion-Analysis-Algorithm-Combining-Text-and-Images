@@ -50,6 +50,7 @@ warnings.filterwarnings('ignore')
 
 class Main:
     def __init__(self, device="cpu", isJoin=True):
+        self.modelName = None
         self.lr = 1e-4  # 学习率
         self.nHidden = 256  # 隐藏层 - Bi-LSTM
         self.seqLen = 80  # 步长 - Bi-LSTM
@@ -58,7 +59,7 @@ class Main:
         self.maxClipping = 5  # 梯度裁剪
         self.normType = 2  # 梯度的范式
         self.dropout = 0.1  # DropOut层的概率 留取80%
-        self.maxEpoch = 10  # 最大迭代 大于3EPoch
+        self.maxEpoch = 10  # 最大迭代 >= 3
         self.displayStep = 1  # 多少轮后展示训练结果ExtractFeature.py  =1时 会记录每个人epoch 当!=1时 记录maxEpoch//displayStep
         self.maxPatience = 10  # 能够容忍多少个epoch内都没有improvement 后期也不用了前期可调
         self.isJoin = isJoin
@@ -97,7 +98,7 @@ class Main:
         return DataLoader(dataset=data, batch_size=self.batchSize, shuffle=True, num_workers=1, drop_last=True)
         # pin_memory=True, prefetch_factor=2, persistent_workers=False)
 
-    def test(self, dataType=DATASET.TEST, num=200):
+    def test(self, dataType=DATASET.TEST, num=2000):
         if isinstance(self.net, torch.nn.Module):
             self.net.eval()
         with torch.no_grad():
@@ -123,7 +124,7 @@ class Main:
         yTrue = torch.cat(yTrue, dim=0)
         return getScore(y_pred=yPred.to(torch.device("cpu")), y_true=yTrue.to(torch.device("cpu")))
 
-    def getErrorSampleIds(self, dataType=DATASET.TEST):
+    def writeErrorSampleIds(self, dataType=DATASET.TEST):
         self.net.eval()
         fileNames = numpy.array([])
         with torch.no_grad():
@@ -139,7 +140,8 @@ class Main:
                 yPred = (yPred >= 0.5).type(torch.int)
                 ids = numpy.array(ids)
                 fileNames = numpy.append(fileNames, ids[(yPred == y).numpy().flatten()])
-        return fileNames
+        with open(saveModelWightsDir + self.modelName + "/Error.txt", "w+", encoding="utf-8") as file:
+            [file.write(fileName + "\n") for fileName in fileNames]
 
     def train_epoch(self):
         if isinstance(self.net, torch.nn.Module):
@@ -192,7 +194,7 @@ class Main:
                 print(validStr)
                 if validScores[3] > maxF1 + 1e-3:
                     maxF1, patience = validScores[3], self.maxPatience
-                    self.saveNet("bestModel", describe="bestModel")
+                    self.saveNet("logs.py3", describe="logs.py3")
                 else:
                     patience -= 1
         #                 if patience == 0: # 是否打开
@@ -202,6 +204,7 @@ class Main:
     def saveNet(self, saveName=time.strftime("%Y-%m-%d", time.localtime()), describe="unKnown"):
         """保存网络参数"""
         savePath = saveModelWightsDir + saveName + "/"
+        self.modelName = saveName
 
         if os.path.exists(savePath):
             shutil.rmtree(savePath)  # 如果重新运行时，切忌如果有相同的文件名时要提前保存！！！！！
@@ -225,12 +228,13 @@ class Main:
         with open(savePath + "describe.txt", 'w+') as f:
             f.write("acc, pre, rec, f1, auc, loss\n")
             f.writelines(self.logs)
-        if describe != "bestModel":
+        if describe != "logs.py3":
             displayScore(saveName)
 
     def loadNet(self, loadName=time.strftime("%Y-%m-%d", time.localtime()), isEval=False):
         """加载网络参数"""
         loadPath = saveModelWightsDir + loadName + "/"
+        self.modelName = loadName
 
         self.net.load_state_dict(torch.load(loadPath + loadName + ".pth"))
 
@@ -245,6 +249,7 @@ class Main:
 if __name__ == "__main__":
     print("<---------- 开始运行 祈祷不报错 ---------->")
     preMain()
-    mian = Main(device="gpu")
-    mian.train()
+    main = Main(device="gpu")
+    main.train()
+    main.writeErrorSampleIds(DATASET.VALID)
     print("<---------- 运行结束 万幸 --------------->")
