@@ -139,7 +139,7 @@ class Main:
                 yPred = self.net.forward(X).to(torch.device("cpu")).flatten()
                 yPred = (yPred >= 0.5).type(torch.int)
                 ids = numpy.array(ids)
-                fileNames = numpy.append(fileNames, ids[(yPred == y).numpy().flatten()])
+                fileNames = numpy.append(fileNames, ids[(yPred != y).numpy().flatten()])
         with open(saveModelWightsDir + self.modelName + "/Error.txt", "w+", encoding="utf-8") as file:
             [file.write(fileName + "\n") for fileName in fileNames]
 
