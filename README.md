@@ -22,7 +22,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 
 　　效果(未进行数据增强)：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
 
-比原论文(f1=0.801)的效果好一些
+比原论文(f1=0.801)的效果好一些, Funt iuon.py 中需要更改 rootPath
 
 ## 效果图
 ![效果图](./ReadMePictureSample/logs.png)
