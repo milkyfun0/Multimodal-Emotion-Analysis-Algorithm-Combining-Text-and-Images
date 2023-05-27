@@ -188,8 +188,7 @@ class Main:
                       "loss:{:.2f}".format(patience, *trainScores))
                 print("test, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f},"
                       "loss:{:.2f}".format(patience, *testScores))
-                validStr = "valid, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f},"
-                "loss:{:.2f}".format(patience, *validScores)
+                validStr = "valid, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f} loss:{:.2f}".format(patience, *validScores)
                 self.logs.append(validStr)
                 print(validStr)
                 if validScores[3] > maxF1 + 1e-3:
