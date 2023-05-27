@@ -234,7 +234,7 @@ def selectErrorFileNames(main, dataType=DATASET.TEST):
     return fileNames
 
 
-def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0.2):
+def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0):
     """
     :param sqLen:
     :param batchSize:
