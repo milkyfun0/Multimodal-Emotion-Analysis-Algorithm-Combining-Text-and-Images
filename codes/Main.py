@@ -193,7 +193,7 @@ class Main:
                 print(validStr)
                 if validScores[3] > maxF1 + 1e-3:
                     maxF1, patience = validScores[3], self.maxPatience
-                    self.saveNet("logs.py3", describe="logs.py3")
+                    self.saveNet("bestModel", describe="bestModel")
                 else:
                     patience -= 1
         #                 if patience == 0: # 是否打开
@@ -227,7 +227,7 @@ class Main:
         with open(savePath + "describe.txt", 'w+') as f:
             f.write("acc, pre, rec, f1, auc, loss\n")
             f.writelines(self.logs)
-        if describe != "logs.py3":
+        if describe != "bestModel":
             displayScore(saveName)
 
     def loadNet(self, loadName=time.strftime("%Y-%m-%d", time.localtime()), isEval=False):
