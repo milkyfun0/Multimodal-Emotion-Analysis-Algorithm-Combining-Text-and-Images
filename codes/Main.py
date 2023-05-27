@@ -247,7 +247,7 @@ class Main:
 
 if __name__ == "__main__":
     print("<---------- 开始运行 祈祷不报错 ---------->")
-    preMain()
+    preMain() # 默认不进行数据增强
     main = Main(device="gpu")
     main.train()
     main.writeErrorSampleIds(DATASET.VALID)
