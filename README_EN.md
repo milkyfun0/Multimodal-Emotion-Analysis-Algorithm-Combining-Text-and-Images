@@ -21,7 +21,7 @@ multimodal-sarcasm-detection
 This project was improved under the premise of reproducing the paper, the address of the original paper：https://aclanthology.org/P19-1239/
 
 Performance：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
-Better than the original paper
+Better than the original paper,The rootPath needs to be changed in Funt iuon.py
 
 ## Rendering
 ![Rendering](./ReadMePictureSample/logs.png)
