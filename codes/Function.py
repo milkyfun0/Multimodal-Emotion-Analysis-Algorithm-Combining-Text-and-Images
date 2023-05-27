@@ -146,6 +146,8 @@ def generateImageVecFiles(readImagesDirs, imageSize=480, inChannel=3, batchSize=
         transforms.ToTensor(),
         transforms.Resize(size=(imageSize, imageSize))
     ])
+    if len(os.listdir(readImagesDirs)) == 0:
+        return None
     dataSet = torchvision.datasets.ImageFolder(readImagesDirs, transform=transform)
     dataIter = torch.utils.data.DataLoader(dataSet, batch_size=batchSize, shuffle=False)
     # num_workers=1)
