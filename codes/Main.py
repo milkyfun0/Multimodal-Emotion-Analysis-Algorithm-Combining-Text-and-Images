@@ -248,5 +248,4 @@ if __name__ == "__main__":
     preMain() # 默认不进行数据增强
     main = Main(device="gpu")
     main.train()
-    main.writeErrorSampleIds(DATASET.VALID)
     print("<---------- 运行结束 万幸 --------------->")
