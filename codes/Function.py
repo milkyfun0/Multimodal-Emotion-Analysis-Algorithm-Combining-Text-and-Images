@@ -299,10 +299,10 @@ def displayScore(logsPath=time.strftime("%Y-%m-%d", time.localtime())):
         ax = axs[i]
         data = numpy.array(scores[scoreNames[i]])
         for j in range(len(labels)):
-            epochsNew = numpy.linspace(min(epochs), max(epochs), 300)
+            epochsNew = numpy.linspace(min(epochs), max(epochs), 200)
             ax.plot(
                 epochsNew,
-                make_interp_spline(epochs, data[:, j], k=2)(epochsNew),  # 平滑处理
+                make_interp_spline(epochs, data[:, j], k=1)(epochsNew),  # 平滑处理
                 "-",
                 color=colors[j],
                 label=labels[j],
