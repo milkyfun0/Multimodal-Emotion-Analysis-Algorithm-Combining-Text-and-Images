@@ -189,7 +189,7 @@ class Main:
                 print("test, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f},"
                       "loss:{:.2f}".format(patience, *testScores))
                 validStr = "valid, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f} loss:{:.2f}".format(patience, *validScores)
-                self.logs.append(validStr)
+                self.logs.append(validStr + "\n")
                 print(validStr)
                 if validScores[3] > maxF1 + 1e-3:
                     maxF1, patience = validScores[3], self.maxPatience
@@ -208,8 +208,6 @@ class Main:
         if os.path.exists(savePath):
             shutil.rmtree(savePath)  # 如果重新运行时，切忌如果有相同的文件名时要提前保存！！！！！
         os.makedirs(savePath, exist_ok=True)
-        if not os.path.exists(savePath + "logs/"):
-            os.mkdir(savePath + "logs/")
         if not os.path.exists(savePath + "runs/"):
             os.mkdir(savePath + "runs/")
 
