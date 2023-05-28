@@ -153,11 +153,11 @@ class Main:
     def train(self):
         maxF1 = 0  # 以F1score为指标
         patience = self.maxPatience  # 当前的容忍度
-        _, testScores, validScores, validStr = None, None, None, None
         start = time.time()
         for epoch in range(self.beforeEpoch, self.beforeEpoch + self.maxEpoch):
             end = time.time()
-            print("----epoch:", epoch, "total cost:{:.2f} min".format((end - start) / 60), "---------")
+            epochStr = "----epoch:{} total cost:{:.2f} min  ---------".format(epoch, (end - start) / 60)
+            print(epochStr)
             self.train_epoch()
             if epoch % self.displayStep == 0:
                 # acc, pre, rec, f1, auc, loss # 元组内的顺序
@@ -165,20 +165,21 @@ class Main:
                     DATASET.VALID)
                 self.representationScores[epoch // self.displayStep] = tuple(
                     zip(trainScores, testScores, validScores))  #
-                print("train, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f},"
-                      "loss:{:.2f}".format(patience, *trainScores))
-                print("test, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f},"
-                      "loss:{:.2f}".format(patience, *testScores))
-                validStr = "valid, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f} loss:{:.2f}".format(patience, *validScores)
-                self.logs.append(validStr + "\n")
-                print(validStr)
+                trainStr = "train, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f}, loss:{:.2f}\n".format(
+                    patience, *trainScores)
+                testStr = "test, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f}, loss:{:.2f}\n".format(
+                    patience, *testScores)
+                validStr = "valid, patience={}, acc:{:.3f}, pre:{:.3f}, rec:{:.3f}, f1:{:.3f}, acu:{:.3f} loss:{:.2f}\n".format(
+                    patience, *validScores)
+                self.logs.extend([epochStr + "\n", trainStr, testStr, validStr])
+                print(trainStr, testStr, validStr, sep="")
                 if validScores[3] > maxF1 + 1e-3:
                     maxF1, patience = validScores[3], self.maxPatience
                     self.saveNet("bestModel", describe="bestModel")
                 else:
                     patience -= 1
-        #                 if patience == 0: # 是否打开
-        #                     break
+                #                 if patience == 0: # 是否打开
+                #                     break
         self.saveNet()
         
     def writeErrorSampleIds(self, dataType=DATASET.TEST):
@@ -249,7 +250,7 @@ class Main:
 
 if __name__ == "__main__":
     print("<---------- 开始运行 祈祷不报错 ---------->")
-    preMain() # 默认不进行数据增强
+    preMain(isSplit=False)  # 默认不进行数据增强，不改变数据分割
     main = Main(device="gpu")
     main.train()
     print("<---------- 运行结束 万幸 --------------->")
