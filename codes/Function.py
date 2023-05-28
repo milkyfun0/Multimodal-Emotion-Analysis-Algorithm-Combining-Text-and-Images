@@ -236,12 +236,13 @@ def selectErrorFileNames(main, dataType=DATASET.TEST):
     return fileNames
 
 
-def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0):
+def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0.0, isSplit=True):
     """
     :param sqLen:
     :param batchSize:
     :param alpha:保留源增强数据的比率
     :param rate:数据增强比例
+    :param isSplit:是否重新分割数据集，与rate=0时搭配使用
     :return:
     """
     if input("是否重新生成数据集(Y/N):") != "Y":
@@ -250,22 +251,23 @@ def preMain(sqLen=75, batchSize=64, alpha=0.7, rate=0):
                               image2ClassPath=classPrefix + "image2classBefore.py3")
     dataList = dataAugment.start(rate=rate, imgSaveDir=imagePrefix + "/augmentImages/", image2ClassSaveDir=classPrefix,
                                  alpha=alpha)
-    with open(textPrefix + "/text.txt", "r", encoding="utf-8") as file:
-        for line in file.readlines():
-            dataList.append(line)
-    trainText, dataList, _, _ = train_test_split(dataList, [0] * len(dataList), train_size=0.8, shuffle=True,
-                                                 random_state=0)
-    textText, validText, _, _ = train_test_split(dataList, [0] * len(dataList), train_size=0.5, shuffle=True,
-                                                 random_state=0)
-    with open(textPrefix + "train_text", "w+", encoding="utf-8") as file:
-        for line in trainText:
-            file.write("\n" + line)
-    with open(textPrefix + "test_text", "w+", encoding="utf-8") as file:
-        for line in textText:
-            file.write("\n" + line)
-    with open(textPrefix + "valid_text", "w+", encoding="utf-8") as file:
-        for line in validText:
-            file.write("\n" + line)
+    if isSplit:
+        with open(textPrefix + "/text.txt", "r", encoding="utf-8") as file:
+            for line in file.readlines():
+                dataList.append(line)
+        trainText, dataList, _, _ = train_test_split(dataList, [0] * len(dataList), train_size=0.8, shuffle=True,
+                                                     random_state=0)
+        textText, validText, _, _ = train_test_split(dataList, [0] * len(dataList), train_size=0.5, shuffle=True,
+                                                     random_state=0)
+        with open(textPrefix + "train_text", "w+", encoding="utf-8") as file:
+            for line in trainText:
+                file.write("\n" + line)
+        with open(textPrefix + "test_text", "w+", encoding="utf-8") as file:
+            for line in textText:
+                file.write("\n" + line)
+        with open(textPrefix + "valid_text", "w+", encoding="utf-8") as file:
+            for line in validText:
+                file.write("\n" + line)
     if os.path.exists(saveImageArrayDir):
         shutil.rmtree(saveImageArrayDir)
     os.mkdir(saveImageArrayDir)
