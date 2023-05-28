@@ -123,26 +123,7 @@ class Main:
         yPred = torch.cat(yPred, dim=0)
         yTrue = torch.cat(yTrue, dim=0)
         return getScore(y_pred=yPred.to(torch.device("cpu")), y_true=yTrue.to(torch.device("cpu")))
-
-    def writeErrorSampleIds(self, dataType=DATASET.TEST):
-        self.net.eval()
-        fileNames = numpy.array([])
-        with torch.no_grad():
-            if dataType == DATASET.TRAIN:
-                testData = self.trainIter
-            elif dataType == DATASET.TEST:
-                testData = self.testIter
-            else:
-                testData = self.validIter
-            for X, y, ids in testData:
-                y.to(torch.device(next(self.net.parameters()).device))
-                yPred = self.net.forward(X).to(torch.device("cpu")).flatten()
-                yPred = (yPred >= 0.5).type(torch.int)
-                ids = numpy.array(ids)
-                fileNames = numpy.append(fileNames, ids[(yPred != y).numpy().flatten()])
-        with open(saveModelWightsDir + self.modelName + "/Error.txt", "w+", encoding="utf-8") as file:
-            [file.write(fileName + "\n") for fileName in fileNames]
-
+    
     def train_epoch(self):
         if isinstance(self.net, torch.nn.Module):
             self.net.train()
@@ -199,6 +180,29 @@ class Main:
         #                 if patience == 0: # 是否打开
         #                     break
         self.saveNet()
+        
+    def writeErrorSampleIds(self, dataType=DATASET.TEST):
+        self.net.eval()
+        with torch.no_grad():
+            yPred, yTrue, ids = [], [], []
+            if dataType == DATASET.TRAIN:
+                testData = self.trainIter
+            elif dataType == DATASET.TEST:
+                testData = self.testIter
+            else:
+                testData = self.validIter
+            for X, y, id in testData:
+                yHat = self.net.forward(X).reshape(y.shape).to(torch.device("cpu"))
+                yHat = (yHat >= 0.5).type(torch.int)
+                y.to(torch.device(yHat.device))
+                yPred.append(yHat)
+                yTrue.append(y)
+                ids.append(id)
+        yPred = torch.cat(yPred, dim=0)
+        yTrue = torch.cat(yTrue, dim=0)
+        ids = numpy.array(ids).flatten()
+        with open(saveModelWightsDir + self.modelName + "/Error.txt", "w+", encoding="utf-8") as file:
+            [file.write(fileName + "\n") for fileName in ids[yPred != yTrue]]        
 
     def saveNet(self, saveName=time.strftime("%Y-%m-%d", time.localtime()), describe="unKnown"):
         """保存网络参数"""
