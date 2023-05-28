@@ -58,7 +58,7 @@ class Main:
         self.batchSize = 64  # 批量
         self.maxClipping = 5  # 梯度裁剪
         self.normType = 2  # 梯度的范式
-        self.dropout = 0.1  # DropOut层的概率 留取80%
+        self.dropout = 0.3  # DropOut层的概率 留取80%
         self.maxEpoch = 10  # 最大迭代 >= 3
         self.displayStep = 1  # 多少轮后展示训练结果ExtractFeature.py  =1时 会记录每个人epoch 当!=1时 记录maxEpoch//displayStep
         self.maxPatience = 10  # 能够容忍多少个epoch内都没有improvement 后期也不用了前期可调
