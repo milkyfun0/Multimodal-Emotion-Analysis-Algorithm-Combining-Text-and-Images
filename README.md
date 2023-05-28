@@ -128,9 +128,9 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### 数据增强
 　　基于[MixGen](https://arxiv.org/abs/2206.08358)算法多模态的数据增强方法,公式如下：
 
-$$ I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert} $$
+$$I_{new}=\varphi\bullet I_{base}+\left(1-\varphi\right)\bullet I_{insert}$$
 
-$$ T_new=RandomInsert(T_insert,T_base,\varphi) $$
+$$T_new=RandomInsert(T_insert,T_base,\varphi)$$
 
 　　其中，φ为保留I_base  or T_base的比例，在本任务中φ≥0.7，以保证语义关系是匹配的。效果：
 
