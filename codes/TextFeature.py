@@ -111,8 +111,8 @@ class TextFeature_Bert(nn.Module):
     def forward(self, text):
         input_ids, token_type_ids, attention_mask = text
         with torch.no_grad():
-            output = self.bert(input_ids=input_ids.squeeze(), token_type_ids=token_type_ids.squeeze(),
-                               attention_mask=attention_mask.squeeze())[0].detach()  # 截断梯度更新
+            output = self.bert(input_ids=input_ids.squeeze(1), token_type_ids=token_type_ids.squeeze(1),
+                               attention_mask=attention_mask.squeeze(1))[0].detach()  # 截断梯度更新
         output = self.layerNorm(output)
         output = self.tanh(self.linear(output))
         output = self.dropout(output)
