@@ -105,7 +105,7 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ![模型架构](./ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
 
 ## GUI结构
-20230531
+**20230531**
 
 ![GUI图](./ReadMePictureSample/GUI.png)
 
