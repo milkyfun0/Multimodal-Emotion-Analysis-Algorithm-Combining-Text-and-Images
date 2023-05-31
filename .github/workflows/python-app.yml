@@ -37,8 +37,8 @@ jobs:
     - name: Test with pytest
       run: |
         pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-        pip install matplotlib==3.4.2 -i https://pypi.tuna.tsinghua.edu.cn/simple/
-        pip install scikit-learn==1.2.2 -i https://pypi.tuna.tsinghua.edu.cn/simple/
-        pip install transformers==4.29.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
-        pip install pillow==9.5.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
-        pip install PyQt5 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+        pip install matplotlib==3.4.2
+        pip install scikit-learn==1.2.2 
+        pip install transformers==4.29.1 
+        pip install pillow==9.5.0
+        pip install PyQt5 
