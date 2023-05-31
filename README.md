@@ -12,6 +12,7 @@ multimodal-sarcasm-detection 多模态反讽检测
 * [文件结构](#文件结构)
 * [库及版本](#库及版本)
 * [模型架构](#模型架构)
+* [GUI结构](#GUI结构)
 * [简单的介绍](#简单的介绍)
    * [项目背景](#项目背景)
    * [参数设置](#参数设置)
@@ -102,6 +103,11 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## 模型架构
 ![模型架构](./ReadMePictureSample/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.png)
+
+## GUI结构
+20230531
+
+![GUI图](./ReadMePictureSample/GUI.png)
 
 ## 简单的介绍
 ### 项目背景
