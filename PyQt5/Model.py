@@ -17,7 +17,7 @@ from torch import nn
 from torchvision import transforms
 from transformers import AutoTokenizer
 
-from codes.Function import textEmbeddingPath, classEmbeddingPath, modelWightsDir, getResNet50, try_gpu, textPrefix
+from codes.Function import textEmbeddingPath, classEmbeddingPath, modelWightsDir, Load_ResNet50, try_gpu, textPrefix
 from codes.ImageRegionNet import ImageRegionNet
 from codes.NNManager import Net
 
