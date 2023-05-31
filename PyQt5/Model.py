@@ -47,7 +47,7 @@ class Model(nn.Module):
         self.imageToTensor = standard_transforms.ToTensor()
         self.imageResize = transforms.Resize([480, 480])
 
-        self.extractImageFeature = ImageRegionNet(net=getResNet50())
+        self.extractImageFeature = ImageRegionNet(net=Load_ResNet50())
         self.net = self.net = Net(self.nHidden, self.seqLen, dropout=self.dropout,
                                   classEmbeddingPath=classEmbeddingPath,
                                   textEmbeddingPath=textEmbeddingPath, device=device, numLayers=self.numLayers)
