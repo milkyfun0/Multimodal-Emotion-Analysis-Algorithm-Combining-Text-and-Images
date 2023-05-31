@@ -35,7 +35,7 @@ class ExtractFeature(nn.Module):
         output1 = self.embedding(X)  # batch * 5 * 200
         # # 这里也可以用之前写的注意力机制 两个版本
         return output1, torch.mean(self.attention.forward(queries=output1, keys=output1, values=output1),
-                                   dim=1).squeeze()
+                                   dim=1).squeeze(1)
         # output2 = self.relu(self.linear1(output1))  # batch * 5 * 100
         # output3 = self.softmax(self.linear2(output2)).reshape(batch_size, 1, classes)  # batch * 1 * 5
         # return output1, torch.squeeze(output3 @ output1)  # batch * 5 * 100, batch * 200
