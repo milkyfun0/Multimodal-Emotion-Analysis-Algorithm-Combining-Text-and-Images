@@ -21,6 +21,7 @@ class SynchroWindow(QWidget):
         self.P = 0
 
     def predict(self, text, imageFilePath, modelWeightPath="./modelWeight/model.pth"):
+        # 默认加载codes产生的模型
         if self.model is None:
             self.model = Model(modelWeightPath, textDir=textPrefix)
         self.P = self.model(text, imageFilePath)[0][0]
