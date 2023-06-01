@@ -102,7 +102,7 @@ Win10 + Anaconda + CUDA　11.1
 | scikit-learn |    1.2.2    |
 | transformers |   4.29.1    |
 |    pillow    |    9.5.0    |
-
+|    pyqt      |    5.15.9   |
 ```
 pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
