@@ -138,7 +138,7 @@ def generateImageVecFiles(readImagesDirs, imageSize=480, inChannel=3, batchSize=
     :param outputSize: 输出的向量多少
     :return:
     """
-    extractImageFeature = ImageRegionNet(net=getResNet50(), block_num=blockNum,
+    extractImageFeature = ImageRegionNet(net=Load_ResNet50(), block_num=blockNum,
                                          kernel_size=kernelSize, stride=stride,
                                          output_size=outputSize, in_channel=inChannel)
     extractImageFeature.eval()
