@@ -52,8 +52,14 @@ multimodal-sarcasm-detection 多模态反讽检测
 │  │      ReplaceEFNet.py  - 利用图像特征进行早期融合
 │  │      
 │  ├─modelCompare - 模型比较
-│  │      BiLSTMBert.py    - 仅文本特征
-│  │ 
+│         BiLSTMBert.py    - 仅文本特征
+|
+├─codesPlus - 不需要预生成Vector
+│     Main.py      - 处理图片特征的网络
+│     ImageRegionNet.py    - 生成图像向量-改
+│     DATASET.py           - 构造数据集-改
+│     NNManager.py         - 总网络框架-改
+|
 ├─image - 图像
 │  ├─imageDataSet          - 原图片
 │  ├─augmentImages         - 数据增强后的图片
