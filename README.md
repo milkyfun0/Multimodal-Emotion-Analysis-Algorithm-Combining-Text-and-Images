@@ -19,11 +19,27 @@ multimodal-sarcasm-detection 多模态反讽检测
    * [数据增强](#数据增强)
 
 ## 前言
-　　本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
+```
+本项目之前是复现论文的前提下进行改进，原论文地址： https://aclanthology.org/P19-1239/
+效果(未进行数据增强)：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
+比原论文(f1=0.801)的效果好一些
+训练中，Funtciuon.py 中需要更改 rootPath
+```
+------
 
-　　效果(未进行数据增强)：acc:0.917, pre:0.871, rec:0.930, **f1:0.900**, acu:0.956, loss:0.3920
+下面是关于不同文件训练方式的区别：
 
-比原论文(f1=0.801)的效果好一些, Funtciuon.py 中需要更改 rootPath
+1. codes：采用预生成图片向量，存起来，再进行模型训练，需要额外占用磁盘空间
+2. codesPlus：将生成图片向量的功能整合到模型中，不需要额外磁盘空间，但是设备要求高，训练慢
+
+下面是关于不同文件模型训练消耗资源，以30epoch为基准
+
+1. codes：35min（预生成图片向量 GPU=1660ti 6GB, DISK=37GB）+ 120min（训练 GPU=P100 16GB）= **155min + 37GB**
+2. codesPlus：11h(训练 GPU=P100 16GB) =  **11h**
+
+------
+
+
 
 ## 效果图
 ![效果图](./ReadMePictureSample/logs.png)
