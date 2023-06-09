@@ -124,7 +124,7 @@ pip install ***==**** -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 ## 模型架构
-![模型架构](./ReadMePictureSample/模型架构.png)
+![模型架构](./ReadMePictureSample/模型框架.png)
 
 ## GUI结构
 **20230531**
